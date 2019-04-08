@@ -1,0 +1,50 @@
+1)
+   a. let line = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+
+   b. function addPerson(arr, name){
+        arr.push(name)
+        return arr
+      }
+       
+      addPerson(line, 'Mary')
+
+    c. function findPerson(arr, name){
+          return arr.indexOf(name)
+        }
+
+      findPerson(line, 'Josh')
+
+    d. function findPerson(arr, name){
+        let index = arr.indexOf(name)
+          if (index >= 0) {
+               return index
+              } else {
+                return 'Name not found'
+              }
+        }
+
+          findPerson(line, 'Emily')
+
+    e. function findPerson(arr, name1, name2){
+          let index = arr.indexOf(name1)
+          arr.splice(index, 0, name2)
+          return arr
+        }
+
+          findPerson(line, "Ava", "Melissa")
+
+    f. function findPerson(arr, name){
+          let index = arr.indexOf(name)
+          arr.splice(index, 1)
+          return arr
+        }
+
+          findPerson(line, 'Patrick')
+
+2)  An example of using a data structure is keeping track of the guests that you have invited to your wedding.  
+    The invitees will all start in an array. When they RSVP, they will need to be organized into 2 categories; 
+    'Attending' and 'Not Attending'
+
+3)  Developers would need to access the array of invitees and move them into other arrays depending on their
+    RSVP response. Invitees would either go into the 'Attending' array or the 'Not Attending' array.
+    The developers would need to add 2 more properties to the 'Attending' invitees objects; Number in Party and Dinner Choice.
