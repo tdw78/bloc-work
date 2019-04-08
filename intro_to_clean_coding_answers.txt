@@ -1,0 +1,120 @@
+Clean Code Checkpoint Answers:
+   1) Clean code is code that is condensed, easy to read, 
+      and easy to maintain.  It is important because code will be shared and used
+      by other developers.  It is imperative that they are able to decipher your code
+      quickly and easily.
+   2) If GPS devices were built with below standard code, drivers that are0 relying 
+      on them would get lost but they could also wind up getting into an accident.  
+   3) No, it is not clean code. The names are not descriptive enough. 
+      Also, there are too many comments.
+      Here is my refactored code:
+        FUNCTION convertTemperature(temp, tempType)
+          IF tempType = "fahrenheit" THEN
+            SET celsius to (temp−32) * (5/9)       // Formula to convert degrees fahrenheit to celsius
+            PRINT celsius         
+          ELSE IF tempType = "celsius" THEN
+            SET fahrenheit to (temp * 1.8000) + 32.00   // Formula to convert degrees celsius to fahrenheit
+            PRINT fahrenheit                       
+          END IF
+        END FUNCTION
+
+    4) No, it is not clean code. The parameter name were too similar. It didn't take
+       into account a negative number for the total parameter.  The order of logic wasn't
+       as clear as it could be. Here is my refactored code:
+       FUNCTION calculatePercent(score, total)
+         IF (total <= 0) THEN
+           PRINT "Sorry, cannot divide by that total" 
+         ELSE
+           SET percentage to score / total * 100
+           PRINT percentage
+         END IF
+       END FUNCTION
+     5)
+      a. Refactored code: 
+         FUNCTION checkOutCustomer(subTotal, discountRate, paymentType)
+           SET tax to .085
+           SET grandTotal to subTotal * discountRate + (subTotal * tax)
+           PRINT "Your total due is: " + grandTotal
+           IF paymentType = 'CASH' THEN
+             CALL getPayment RETURNING amount
+             PRINT "Change due: " + (amount - grandTotal)
+           ELSE IF paymentType = 'CREDIT CARD' THEN
+             CALL getPayment RETURNING amount
+             PRINT "Your credit card has been charged: " + grandTotal
+           END IF
+         END FUNCTION
+
+      b. Refactored code:  
+         FUNCTION checkoutBook(book, guest)
+           IF guest.accountActive AND NOT(guest.hasOverdueBooks) AND guest.outstandingFees = 0 THEN
+             APPEND book to guest.books
+             SET book.status to "Checked Out"
+             PRINT "Your books have been issued."
+           ELSE
+             PRINT "Unable to check out book."
+           END IF
+         END FUNCTION
+      
+      c. Refactored code:
+         CLASS BankAccount
+
+           FUNCTION displayBalance
+             PRINT balance
+           END FUNCTION
+
+           FUNCTION deposit(amount)
+             SET balance to balance + amount
+           END FUNCTION
+
+           FUNCTION withdraw(amount)
+             IF balance > amount THEN
+               SET balance to balance - amount
+             END IF
+           END FUNCTION
+
+         CLASS OtherOptions
+
+           FUNCTION creditCardOffer
+             IF NOT(customer.hasCreditCard) THEN
+               CALL offerCreditCard
+             END IF
+           END FUNCTION
+
+           FUNCTION checkStatus
+             IF NOT(customer.hasCheckingAccount) THEN
+               CALL offerCheckingAccount
+             END IF
+           END FUNCTION
+
+        ....
+        ....
+        ....
+
+        END
+
+        Programming Questions:
+        1) Square:
+            function findPerfectSquare(arr){
+              let sum = 0
+                for(i=0; i<arr.length; i++){
+                sum = sum + arr[i]
+              }
+             let squareRoot = Math.sqrt(sum)
+               if(squareRoot % 1 === 0){
+                 return squareRoot
+              } else {
+                 return sum
+              }
+            }
+
+      2) Duplicate:
+          function isDuplicate (arr) {
+            for(i=0; i<=arr.length; i++){
+              for (j= i; j<=arr.length; j++){
+                if(arr[i] === arr[j] && i != j){
+                 return true
+             } 
+            }
+           }
+             return false
+          }

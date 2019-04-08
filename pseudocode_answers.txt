@@ -1,0 +1,40 @@
+Pseudocode Checkpoint Short Answers:
+
+1)  Programmers use pseudocode to express in words what an algorithm will do step by step before writing the actual code for the algorithm.
+2)  If you run pseudocode on a computer, nothing will happen since it’s not an actual programming language.
+
+Pseudocode Programming Assignment:
+
+1)	INPUT first number
+    INPUT second number
+    IF first number is greater than second number
+       PRINT first number
+    ELSE 
+       PRINT second number
+    END IF
+
+2)	SET number to 1
+    PRINT number
+    INCREMENT number by 1
+    IF number is less than or equal to 100 THEN
+      PRINT number
+    END IF
+
+3)	INPUT entry
+    INPUT array
+    IF name in array is eqaul to entry THEN
+	     RETURN `We found a match: name phoneNumber`
+    ELSE
+       PRINT 'Sorry, no match found'
+    END IF
+
+4)  function checkPhonebook (entry, array) {
+        for (i=0; i < array.length; i++){
+            if (array[i].name === entry) {
+                return `We found a match: ${array.name} ${array.phoneNumber}`
+            } else {
+              return 'Sorry, no match found'
+            }
+        }
+    }
+    
