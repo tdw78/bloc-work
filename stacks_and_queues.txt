@@ -1,0 +1,94 @@
+EXERCISES:
+
+1) The main difference between stacks and queues is the way they prioritize data.
+   Stacks use the LIFO prioritizing method and Queues use the FIFO prioritizing method.
+
+2) Both stack and queues are used by developers to prioritize and organize data.
+
+3) For this case, I would implement the stack data structure. I would choose the stack
+   because it uses the LIFO prioritizing method. The LIFO prioritizing method is ideal
+   for dealing with UNDO and REDO.
+
+PROGRAMMING QUESTIONS:
+
+1)  function reverse (word){
+      let stack = []     
+      for(i=0; i<word.length; i++){
+        stack.push(word[i])
+    }
+      let reversedWord = ""
+      while(stack.length > 0){
+        reversedWord = reversedWord + stack.pop()
+   }
+       return reversedWord
+}
+
+console.log(reverse('Bloc!'))
+
+
+2)  class Queue {
+      constructor(){
+        this.stack = []
+    }
+  
+     enqueue(element){
+       this.stack.push(element)
+       return this.stack
+    }
+
+     dequeue(){
+       if(this.stack.length === 0){
+         return "Nothing to remove"
+      } else {
+        let temp = this.stack.pop()
+        return temp
+     }
+   } 
+  
+     peek(){
+       if(this.stack.length === 0){
+         return "Stack is empty"
+       } else {
+          return this.stack[0]
+     }
+   }
+
+  }
+
+  let queue = new Queue()
+    
+
+1) class Queue {
+     constructor(){
+       this.stack = []
+     }
+  
+    enqueue (element){
+      this.stack.push(element)
+      return this.stack
+   }
+
+    dequeue(){
+      if(this.stack.length === 0){
+        return "Nothing to remove"
+    } else {
+       let temp = this.stack[0]
+       this.stack.shift()
+       return temp
+    }
+  }
+
+    peek(){
+      if(this.stack.length === 0){
+        return "Stack is empty"
+    } else {
+        return this.stack[0]
+    }
+  }
+
+  }
+
+  let queue = new Queue()
+  console.log(queue.enqueue(9))
+  console.log(queue.enqueue(1))
+  console.log(queue.dequeue())
