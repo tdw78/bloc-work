@@ -1,0 +1,96 @@
+1) One positive thing about linked lists is that they use up considerable 
+   less memory than arrays.
+   One negative thing about using linked lists is that accessing elements in the list 
+   takes much longer and is more difficult compared to arrays.
+
+2) An example of a linked list in the real world is when customers are waiting in
+   line at the DMV. Every customer is given a number and is not required to stand 
+   in line. The number on the ticket deterimines who is next up.
+     
+
+  Coding Questions
+
+ 1)  The pseudocode does not contain code for which it can iterate through the 
+     list and find the end of list. As is, the code will always add the new Node 
+     to the head or right after the head.
+
+     Functional code:
+
+     class Node {
+       constructor(value){
+         this.value = value
+         this.next = null
+       }
+     }
+
+      class LinkedList {
+        constructor(){
+          this.head = null;
+          this.length = 0
+        }
+
+      push(value){
+        let node = new Node(value);
+        if (this.head === null) {
+          this.head = node
+        } else {
+          let currentNode = this.head
+          while (currentNode.next){
+            currentNode = currentNode.next
+        }
+          currentNode.next = node
+       }
+          this.length++
+       }
+     }
+
+let myNode = new LinkedList()
+myNode.push(11)
+myNode.push(22)
+console.log(myNode)
+   
+  2)  removeDuplicates() {
+        let currentNode = this.head
+        let previous = null
+        let next = null
+        let duplicates = []
+
+        while (currentNode.next) {
+          if (currentNode.value === currentNode.next.value) {
+            previous.next = currentNode.next
+            duplicates.push(currentNode.value)
+          } else {
+            currentNode = currentNode.next
+         }
+       }
+           this.length--
+           return this
+      }
+
+      let myNode = new LinkedList()
+      myNode.push(22)
+      myNode.push(88)
+      myNode.push(11)
+      myNode.push(24)
+      myNode.push(22)
+      myNode.removeDuplicates()
+
+  3) reverse(head){
+       let currentNode = this.head
+       let previous = null
+       let next = null
+       while(currentNode.next){
+         next = currentNode.next
+         currentNode.next = previous
+         this.previous = currentNode
+         currentNode = next       
+     }
+      return previous
+    }
+   }
+
+let myNode = new LinkedList()
+myNode.push(11)
+myNode.push(22)
+myNode.push(44)
+myNode.reverse()
