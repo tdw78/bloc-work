@@ -1,5 +1,8 @@
-1) One positive thing about linked lists is that they use up considerable 
-   less memory than arrays.
+1) One positive thing about linked lists is that they use up considerably 
+   less memory than arrays.  Nodes of the linked list are not stored next to each
+   other as is the case with arrays. Rather, the operating system find unused space in 
+   memory and stores the new node there.
+
    One negative thing about using linked lists is that accessing elements in the list 
    takes much longer and is more difficult compared to arrays.
 
@@ -18,79 +21,73 @@
 
      class Node {
        constructor(value){
-         this.value = value
-         this.next = null
-       }
-     }
+        this.value = value
+        this.next = null
+        }
+      }
 
       class LinkedList {
         constructor(){
           this.head = null;
           this.length = 0
-        }
-
+       }
+      
       push(value){
         let node = new Node(value);
-        if (this.head === null) {
-          this.head = node
-        } else {
-          let currentNode = this.head
-          while (currentNode.next){
+          if (this.head === null) {
+            this.head = node
+          } else {
+            let currentNode = this.head
+            while (currentNode.next){
             currentNode = currentNode.next
-        }
+         }
           currentNode.next = node
-       }
+        }
           this.length++
        }
-     }
-
-let myNode = new LinkedList()
-myNode.push(11)
-myNode.push(22)
-console.log(myNode)
-   
-  2)  removeDuplicates() {
+  
+      reverse(head){
+        let currentNode = this.head
+        let previous = null
+        let next = null
+        while(currentNode.next){
+          next = currentNode.next
+          currentNode.next = previous
+          this.previous = currentNode
+          currentNode = next       
+        }
+          return previous
+       }
+  
+      removeDuplicates() {
         let currentNode = this.head
         let previous = null
         let next = null
         let duplicates = []
 
-        while (currentNode.next) {
-          if (currentNode.value === currentNode.next.value) {
-            previous.next = currentNode.next
-            duplicates.push(currentNode.value)
-          } else {
-            currentNode = currentNode.next
+          while (currentNode.next) {
+            if (currentNode.value === currentNode.next.value) {
+              previous.next = currentNode.next
+              duplicates.push(currentNode.value)
+             } else {
+               currentNode = currentNode.next
+             }
+          }
+             this.length--
+             return this
          }
+
+      print(){
+        let current = this.head
+        let count = 0
+        let arr = []
+        while(count < this.length) {
+          arr.push(current.value)
+          current = current.next
+          count++
+        }
+          console.log(arr)
        }
-           this.length--
-           return this
-      }
-
-      let myNode = new LinkedList()
-      myNode.push(22)
-      myNode.push(88)
-      myNode.push(11)
-      myNode.push(24)
-      myNode.push(22)
-      myNode.removeDuplicates()
-
-  3) reverse(head){
-       let currentNode = this.head
-       let previous = null
-       let next = null
-       while(currentNode.next){
-         next = currentNode.next
-         currentNode.next = previous
-         this.previous = currentNode
-         currentNode = next       
-     }
-      return previous
     }
-   }
 
 let myNode = new LinkedList()
-myNode.push(11)
-myNode.push(22)
-myNode.push(44)
-myNode.reverse()
