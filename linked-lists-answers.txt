@@ -19,79 +19,85 @@
 
      Functional code:
 
-     class Node {
-       constructor(value){
-        this.value = value
-        this.next = null
-        }
-      }
+    class Node {
+  constructor(value){
+   this.value = value
+   this.next = null
+   }
+ }
 
-      class LinkedList {
-        constructor(){
-          this.head = null;
-          this.length = 0
-       }
-      
-      push(value){
-        let node = new Node(value);
-          if (this.head === null) {
-            this.head = node
-          } else {
-            let currentNode = this.head
-            while (currentNode.next){
-            currentNode = currentNode.next
-         }
-          currentNode.next = node
-        }
-          this.length++
-       }
-  
-   
-       
-  
-      removeDuplicates() {
-        let currentNode = this.head
-        let previous = null
-        let next = null
-        let duplicates = []
+ class LinkedList {
+   constructor(){
+     this.head = null
+     this.length = 0
+  }
 
-          while (currentNode.next) {
-            if (currentNode.value === currentNode.next.value) {
-              previous.next = currentNode.next
-              duplicates.push(currentNode.value)
-             } else {
-               currentNode = currentNode.next
-             }
-          }
-             this.length--
-             return this
-         }
+ push(value){
+   let node = new Node(value)
+     if (this.head === null) {
+       this.head = node
+     } else {
+       let currentNode = this.head
+       while (currentNode.next){
+       currentNode = currentNode.next
+    }
+     currentNode.next = node
+   }
+     this.length++
+  }
 
-        reverse(){
-          let current = this.head
-          let previous = null
-          let next = null
+
+  reverse(){
+    let current = this.head
+    let previous = null
+    let next = null
     
-          while(current.next) {
-            next = current.next
-            current.next = previous
-            previous = current
-            current = next
-          }
-            return true
-        }
+    while(current !== null) {
+      next = current.next
+      current.next = previous
+      previous = current
+      current = next
+      this.head = previous
+  }
+     return previous
+ }
 
-       print(){
-         let currentNode = this.head
-         let count = 0
-         let arr = []
-         while(count < this.length) {
-           arr.push(currentNode.value)
-           currentNode = currentNode.next
-           count++
-        }
-           console.log(arr)
+ removeDuplicates(){
+  let current = this.head
+  
+  while(current != null){
+    let curr = current
+    while(curr.next != null){
+      if(curr.next.value == current.value){
+          curr.next = curr.next.next
+      } else {
+          curr = curr.next
       }
     }
+    current = current.next
+  }
+}
+
+  print(){
+    let currentNode = this.head
+    let arr = []
+    
+    while(currentNode !== null){
+      arr.push(currentNode.value)
+      currentNode = currentNode.next
+   }
+      console.log(arr)
+ }
+
+}
 
 let myNode = new LinkedList()
+myNode.push(1)
+myNode.push(2)
+myNode.push(3)
+myNode.push(1)
+myNode.push(2)
+myNode.push(4)
+
+myNode.removeDuplicates()
+myNode.print()
