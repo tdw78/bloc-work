@@ -46,18 +46,8 @@
           this.length++
        }
   
-      reverse(head){
-        let currentNode = this.head
-        let previous = null
-        let next = null
-        while(currentNode.next){
-          next = currentNode.next
-          currentNode.next = previous
-          this.previous = currentNode
-          currentNode = next       
-        }
-          return previous
-       }
+   
+       
   
       removeDuplicates() {
         let currentNode = this.head
@@ -77,17 +67,31 @@
              return this
          }
 
-      print(){
-        let current = this.head
-        let count = 0
-        let arr = []
-        while(count < this.length) {
-          arr.push(current.value)
-          current = current.next
-          count++
+        reverse(){
+          let current = this.head
+          let previous = null
+          let next = null
+    
+          while(current.next) {
+            next = current.next
+            current.next = previous
+            previous = current
+            current = next
+          }
+            return true
         }
-          console.log(arr)
-       }
+
+       print(){
+         let currentNode = this.head
+         let count = 0
+         let arr = []
+         while(count < this.length) {
+           arr.push(currentNode.value)
+           currentNode = currentNode.next
+           count++
+        }
+           console.log(arr)
+      }
     }
 
 let myNode = new LinkedList()
