@@ -1,0 +1,207 @@
+Exercises:
+
+1) What is a hash table?
+    A hash table is a data structure that stores data in key-value pairs
+2) What is hashing?
+    Hashing is converting a given key into an integer.
+3) How does a hash table store data?
+    Hash tables store data unordered in key-value pairs.  The key-value pair is 
+    assigned a hash code based on its key.  The hash table then uses the hash code
+    to determine where to store the key-value pair.   
+4) How are hash tables and objects different?
+      Hash tables can be iterated over and the data can be manipulated easier.
+      Also, hash table data can be accessed by their index and object data can only 
+      be accessed by its key. 
+5) Determine whether you would use a hash table or an object to store each 
+   of the following pieces of data:
+    - A list of pets and their unique names. = Hash Table
+    - The name, age, and the birthday of your best friend. = Object
+    - The name and location of every company in a given city. = Hash Table
+    - All of the books checked out from a library by a particular individual. = Hash Table 
+    - The primary and secondary phone numbers for a contact. = Object
+
+Programming Questions
+1)  class Customer {
+      constructor(name, streetAddress, city, state, zip, phoneNumber){
+        this.name = name
+        this.streetAddress = streetAddress
+        this.city = city
+        this.state = state
+        this.zip = zip
+        this.phoneNumber = phoneNumber
+    }
+    getAddress() {
+       return `${this.streetAddress} ${this.city}, ${this.state} ${this.zip}`
+  }
+}
+
+let customer1 = new Customer("Tim Weiss", "984 Zarick Dr.", "San Jose", "CA", 95129, 4152500122)
+
+function hash (phoneNumber, size) {
+  let hashedKey = 0
+  if(typeof phoneNumber === "number") {
+    let digits = phoneNumber.toString()
+    let arr = []
+    
+    for(i=0; i < digits.length; i++){
+      arr.push(digits[i])
+    }
+    for(i=0; i<arr.length; i++){
+      hashedKey = hashedKey + parseInt(arr[i])
+      return hashedKey % size
+    }
+   } else {
+     return "Please enter a phone number"
+  }
+}
+
+class HashTable {
+  constructor(){
+    this.size = 20
+    this.buckets = Array(this.size)
+    this.customer = new Customer()
+    
+    for (let i=0; i < this.buckets.length; i++){
+      this.buckets[i] = new Map()
+    }
+ }
+  
+  insert(phoneNumber, value) {
+    let index = hash(phoneNumber, this.size)
+    this.buckets[index].set(phoneNumber, value)
+  }
+  
+  search (phoneNumber) {
+    let index = hash(phoneNumber, this.size)
+    return this.buckets[index].get(phoneNumber)
+  }  
+}
+
+const ht = new HashTable()
+ht.insert(customer1.phoneNumber, customer1)
+console.log(ht.search(4152500122))
+
+2)  class StoreItem {
+      constructor(name, quantity){
+        this.name = name
+        this.quantity = quantity
+   }
+  
+   incrementQty (item, amount) {
+     item.quantity = item.quantity + amount
+  }  
+  
+   decrementQty (item, amount){
+     item.quantity = item.quantity - amount
+  }
+}
+
+let hammer = new StoreItem("hammer", 9)
+
+function hash (key, size) {
+  let hashedKey = 0
+  
+    for(i=0; i < key.length; i++){
+      hashedKey = key.charCodeAt(i)
+    }
+    return hashedKey % size
+ }
+
+class HashTable {
+  constructor(){
+    this.size = 20
+    this.buckets = Array(this.size)
+    this.storeItem = new StoreItem()
+    
+    for (let i=0; i < this.buckets.length; i++){
+      this.buckets[i] = new Map()
+    }
+ }
+  
+  insert(itemName, value) {
+    let index = hash(itemName, this.size)
+    this.buckets[index].set(itemName, value)
+  }
+  
+  search (itemName) {
+    let index = hash(itemName, this.size)
+    return this.buckets[index].get(itemName)
+  }  
+}
+
+  const ht = new HashTable()
+  ht.insert(hammer.name, hammer)
+  console.log(ht.search("hammer"))
+  hammer.incrementQty(hammer, 5)
+  console.log(ht.search("hammer"))
+
+3)  class Newspaper {
+      constructor(publisher, date, value){
+        this.publisher = publisher
+        this.date = date
+        this.value = value
+      }
+    }
+
+     let nyTimes = new Newspaper("NY Times", 04192012, ["Newspaper Articles"])
+     let chron = new Newspaper("Chron", 3122f015, ["Newspaper Articles"])
+
+     function hash (key, size) {
+       let hashedKey = 0
+  
+       for(i=0; i < key.length; i++){
+         hashedKey = key.charCodeAt(i)
+       }
+         return hashedKey % size
+      }
+
+       class HashTable {
+         constructor(){
+           this.size = 20
+           this.buckets = Array(this.size)
+
+          for (let i=0; i < this.buckets.length; i++){
+            this.buckets[i] = new Map()
+          }
+      }
+
+         insert (key1, key2, value) {
+           let hashArray = []
+
+           for (var i=0; i < key1.length; i++){
+             hashArray.push(key1[i])
+          }
+           let date = key2.toString()
+           for (var i=0; i < date.length; i++){
+             hashArray.push(date[i])
+          }
+           let newKey = hashArray.join('')
+  
+           let index = hash(newKey, this.size)
+           this.buckets[index].set(newKey, value)
+        }
+
+         search (key1, key2) {
+           let hashArray = []
+
+           for (var i=0; i < key1.length; i++){
+             hashArray.push(key1[i])
+          }
+           let date = key2.toString()
+             for (var i=0; i < date.length; i++){
+               hashArray.push(date[i])
+         }
+            let newKey = hashArray.join('')
+  
+            let index = hash(newKey, this.size)
+            return this.buckets[index].get(newKey)
+        }
+      } 
+
+       const ht = new HashTable()
+
+       ht.insert(nyTimes.publisher, nyTimes.date, nyTimes)
+       ht.insert(chron.publisher, chron.date, chron)
+
+       console.log(ht.search("NY Times", 04192012))
+       console.log(ht.search("Chron", 3122015))
