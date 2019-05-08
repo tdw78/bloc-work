@@ -1,0 +1,171 @@
+Questions:
+
+1) What is a binary tree and what makes it unique to other trees?
+    A binary tree is a hierarchal data structure made up of nodes.  What makes it unique
+    from other trees is that each node may point up to 2 other nodes, a left and a right.
+    
+2) What is a heuristic?
+    Heuristic is when softwate engineers use their best guess when writing an 
+    algorithm.  Heuristics are used when sovling very complex problem that has a very 
+    large, mayber infinte, number of possible answers.
+
+3) What is another problem besides the shortest-path problem that requires the use of heuristics?
+
+4) What is the difference between a depth-first search and a breadth-first search?
+   Depth-first searches start at the root node and trave down a branch and then back up
+   a branch until a match is found.
+   Breadth-first searches start at the root node and then traverse the nodes 
+   horizontally across the tree until a match is found.
+
+5) Explain in your own words what an undirected, a-cyclic, unweighted graph is.
+    An undirect, a-cyclic, unweights graph is 
+    no path, the head node and tail node are not connected, no unit of measure is
+    associated with the connection between the nodes.
+
+6) What kind of graph is a binary search tree?
+     Binary search trees are directed, a-cyclic, unweighted graph.
+
+Programming Questions:
+
+1) Pseudocode for checking if value exists in tree:
+     FUNCTION contains(value)
+       IF value = root value THEN
+         RETURN true
+       ELSE IF value is less than root value THEN
+         CHECK for left child node of root
+           IF no node found
+             RETURN false
+           ELSE CALL contains on left child node of root
+        ELSE IF value is greater than root value THEN
+         CHECK for right child node of root
+           IF no node found
+             RETURN false
+           ELSE CALL contains on right child node of root
+           END IF
+       END IF
+     END FUNCTION
+
+2) Pseudocode for finding distance between 2 nodes:
+     FUNCTION findLCA (root, n1, n2)
+       IF root value = n1 or n2
+         RETURN root
+        ELSE IF n1 and n2 are less than root value
+          CALL findLCA on left child node of root
+        ELSE IF n1 and n2 are greater than root value
+          CALL findLCA on right child node of root
+        ELSE
+          RETURN root
+       END IF   
+      END FUNCTION
+
+      FUNCTION findDistanceFromRoot(root, value)
+        IF root value = value
+          RETURN 0
+         ELSE IF value is less than root value
+           CALL findDistanceFromRoot on left child node plus 1
+         ELSE IF value is greater than root value
+           CALL findDistanceFromRoot on rigth child node plus 1
+        END IF
+      END FUNCTION
+
+      FUNCTION findPathLength(root, n1, n2)
+        SET lca to CALL findLCA(root, n1, n2)  
+        SET dist1 to CALL findDistanceFromRoot(lca, n1)
+        SET dist2 to CALL findDistanceFromRoot(lca, n2)
+        RETURN dist1 + dist2
+      END FUNCTION
+
+Functional Code:
+
+class BST {
+  constructor (value) {
+    this.value = value
+    this.left = null
+    this.right = null
+  }
+  
+  insert (value) {
+    if (value <= this.value) {
+     if (this.left === null)  {
+       this.left = new BST (value) 
+     } else {
+       this.left.insert(value)
+     }
+    } else if (value > this.value) {
+      if (this.right === null) {
+        this.right = new BST(value)
+      } else {
+        this.right.insert(value)
+      }
+    }
+   }
+  
+  contains (value) {
+    if (value === this.value) {
+      return true
+    } else if (value < this.value){
+      if (!this.left) {
+        return false
+      } else {
+        return this.left.contains(value)
+      }
+    } else if (value > this.value){
+      if (!this.right) {
+        return false
+      } else {
+        return this.right.contains(value)
+      }
+    }
+  }
+  
+  findLCA (root, n1, n2) {
+    if (root === n1 || root === n2) {
+      return root
+    } else if (n1 < root.value && n2 < root.value){
+        return this.left.findLCA(root.left, n1, n2)  
+    } else if (n1 > root.value && n2 > root.value){
+        return this.right.findLCA(root.right, n1, n2)
+    } else {
+      return root
+    }
+  }
+  
+  findDistanceFromRoot(root, value) {
+    if (root.value === null) {
+      return undefined
+    }
+    if (root.value === value) {
+      return 0
+    } else {
+      if (value < root.value) {
+        return this.left.findDistanceFromRoot(root.left, value) + 1
+      } else if (value > root.value) {
+        return this.right.findDistanceFromRoot(root.right, value) + 1
+      }
+    }
+  }
+  
+  findPathLength (root, n1, n2) {
+    let lca = this.findLCA(root, n1, n2)
+    let dist1 = this.findDistanceFromRoot(lca, n1)
+    let dist2 = this.findDistanceFromRoot(lca, n2)
+
+    return dist1 + dist2
+  }
+}
+
+
+let bst = new BST(40)
+
+bst.insert(20)
+bst.insert(10)
+bst.insert(30)
+bst.insert(60)
+bst.insert(50)
+bst.insert(70)
+bst.insert(75)
+bst.insert(55)
+bst.insert(5)
+bst.insert(25)
+
+console.log(bst.findPathLength(bst, 5, 25))
