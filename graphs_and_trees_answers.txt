@@ -10,7 +10,9 @@ Questions:
     large, mayber infinte, number of possible answers.
 
 3) What is another problem besides the shortest-path problem that requires the use of heuristics?
-     
+     Another programming situation that requires the use of heuristics is when search engines produce
+     the results of a search.  Almost an infinite number of results could be returned, but the algorithm 
+     must produc the results most likely desired by the user. 
 
 4) What is the difference between a depth-first search and a breadth-first search?
    Depth-first searches start at the root node and trave down a branch and then back up
