@@ -1,0 +1,58 @@
+Exercises:
+
+1)
+FUNCTION makeCoffee
+  PLUG in coffee maker
+  INSERT coffee filter into coffee maker
+  POUR coffee grinds into coffee filter
+  POUR appropriate amount of water into coffee maker
+  PLACE carafe into position in coffee maker
+  PRESS brew button
+END FUNCTION
+
+FUNCTION washDishes
+  PLACE drying rack next to sink
+  SQUEEZE dish soap onto sponge
+  TURN on faucet
+  HOLD dirty dish in one hand
+  HOLD sponge in free hand
+  RUB entire surface of dish with sponge
+  RINSE dish under water
+  PLACE dish in drying rack
+END FUNCTION
+
+FUNCTION changeLightBulb
+  Switch light switch to off position
+  Unscrew current light bulb by rotating left
+  Choose new light bulb
+  Screw in new light bulb by rotating right
+  Switch light switch to on position to ensure new bulb is working
+    IF new light bulb is working THEN
+      RETURN
+     ELSE IF new light bulb is not working THEN
+       WHILE new light bulb count is greater than 0
+         CALL changeLightBulb on new light bulb
+       END WHILE
+     ELSE get a new lamp
+    END IF
+END FUNCTION
+
+2)
+  1: UBER is impressive becaue their algorithm must, find the nearest driver to your pick up location, 
+     find quickest path to destination and calculate price all in timely manner.
+  
+  2: Domono's Pizza is very efficient. Their algorithm receives your order, builds and cooks 
+     your pizza accurately and quickly, then delivers your pizza to your address in a given amount of time
+     to ensure your pizza is not cold by the time you receive it.
+  
+  3: Chipotle is able to accommodate a lot of customers in a relatively short period of time.  This is due
+     to their efficient algorithm.  Each customer starts at the same point and is brought through the same 
+     sequence of steps/decisions.  Each decision includes very few options, so the customer doesn't need to
+     spend time thinking about their response.
+
+3) An efficient algorithm will accomplish the goal in shorter amount of time without comprimising accuracy.
+   To accomplish this, efficient algorithms will not have any unneccessary steps/directions.  Each step/direction 
+   in the algorithm is relevant and is needed to achieve the desired result.  Also, each step/direction in the
+   algorithm will be clear with what it is asking for and will not be able to be interpeted in multiple ways.
+
+
