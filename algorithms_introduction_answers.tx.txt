@@ -2,35 +2,53 @@ Exercises:
 
 1)
 FUNCTION makeCoffee
+ IF coffee maker is unplugged THEN
   PLUG in coffee maker
-  INSERT coffee filter into coffee maker
-  POUR coffee grinds into coffee filter
-  POUR appropriate amount of water into coffee maker
-  PLACE carafe into position in coffee maker
+  ELSE
+    IF no filter is inserted THEN
+      INSERT filter into coffee maker
+    END IF  
+ END IF  
+  Scoop and pour coffee grinds into coffee filter
+  IF water reservoir is empty THEN 
+    Pour appropriate amount of water into coffee maker
+   ELSE 
+     PLACE carafe into position in coffee maker
+  END IF   
   PRESS brew button
 END FUNCTION
 
 FUNCTION washDishes
-  PLACE drying rack next to sink
-  SQUEEZE dish soap onto sponge
-  TURN on faucet
-  HOLD dirty dish in one hand
-  HOLD sponge in free hand
-  RUB entire surface of dish with sponge
-  RINSE dish under water
-  PLACE dish in drying rack
+ IF drying rack is not in position THEN
+   PLACE drying rack next to sink
+  ELSE 
+   SQUEEZE dish soap onto sponge
+ END IF
+ IF faucet is turned off THEN
+   TURN on faucet
+  ELSE
+   Pick up and hold dirty dish in one hand AND hold sponge in free hand
+ END IF  
+  Rub entire surface of dish with sponge AND THEN
+  Rinse dish under running water
+  IF dish is still dirty THEN
+    CALL washDishes on dish
+   ELSE
+     PLACE dish in drying rack
 END FUNCTION
 
 FUNCTION changeLightBulb
-  Switch light switch to off position
-  Unscrew current light bulb by rotating left
-  Choose new light bulb
-  Screw in new light bulb by rotating right
-  Switch light switch to on position to ensure new bulb is working
+ IF light switch is turned on THEN
+   Switch light switch to off position
+  ELSE
+   Unscrew current light bulb by rotating it left until loose
+ END IF
+  SELECT a new light bulb AND Install new light bulb by rotating it right until tight
+  Switch light switch to on position
     IF new light bulb is working THEN
       RETURN
      ELSE IF new light bulb is not working THEN
-       WHILE new light bulb count is greater than 0
+       WHILE new light bulb inventoryCount is greater than 0
          CALL changeLightBulb on new light bulb
        END WHILE
      ELSE get a new lamp
