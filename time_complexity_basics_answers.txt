@@ -40,11 +40,3 @@ Exercises:
 8) The Time Complexity of the fibonacci function is O(2^n).
 
 9) The most efficient code snippet is the linearSearch function.
-
-
-
-
-
-
-
-
