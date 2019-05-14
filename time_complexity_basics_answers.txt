@@ -1,0 +1,50 @@
+Exercises:
+
+1) What is time complexity and what is its relation to algorithms?
+   - Time Complexity is a metric used to express how input size impacts an 
+     algorithms runtime.
+
+2) What is runtime?
+   - Runtime is, in a worst case scenario, the amount of time an algorithm will take
+     to complete its execution.
+
+3) How is the runtime of an algorithm calculated?
+   - To calculate runtime, first add up how many instruction the algotithm has. Then
+     simplify the expression by reducing it to the largest term and removing any constants.
+
+4) Name the six types of algorithm growth rates we saw in this checkpoint and list 
+   them in order of most efficient to least efficient. Now Google another algorithmic 
+   growth rate not covered and place it in the correct spot in your list.
+   - The growth rates in order from most efficient to least efficient are:
+       1) O(1)
+       2) O(log n)
+       3) O(n)
+       4) O(n log n)
+       5) O(n^2)
+       6) O(n^3)
+       7) (2^n)
+
+5) Choose one of the algorithmic growth rates from the last question and make a
+   comparison to a real-life situation.
+   - An example of a Constant growth rate, O(1), is a golf instructor giving a clinic on how
+     to hit bunker shots. The number of students watching would not impact the instructors 
+     work load. The instructor would go through their presentation the same if there was 1 student
+     or if there were 1000 students.
+     If the instructor had to teach each student one at a time, then the growth rate would
+     be Linear, O(n).
+
+6) The Time Complexity of the linearSearch function is O(n).
+
+7) The Time Complexity of the foo function is O(n^2).
+
+8) The Time Complexity of the fibonacci function is O(2^n).
+
+9) The most efficient code snippet is the linearSearch function.
+
+
+
+
+
+
+
+
