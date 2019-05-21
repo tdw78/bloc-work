@@ -1,0 +1,98 @@
+Short Answers:
+
+1) What is a real-life scenario that uses linear search?
+    - An example of a real-life linear search is when you are looking for you seat 
+      at a baseball game.  You start at the bottom of the rows and keep walking up 
+      until the row number matches your row number.
+
+2) What is a real-life scenario that uses binary search?
+    - An example of a real-life binary search is when you are searching for a word 
+      in a dictionary. You  first open the dictionary and determine if word you are 
+      looking for is alphabetically to the left or right of where you opened
+      dictionary to.
+
+3) Given the alphabetically sorted collection in this checkpoint, how many 
+   iterations would it take to find the value G using linear search?
+    - It would take 7 iterations to find G using a lineat search.
+
+4) Given the alphabetically sorted collection in this checkpoint, how many 
+   iterations would it take to find the value G using binary search?
+    - It would take 3 iterations to find G using a binary search.
+
+5) Given an unsorted collection of a million items, which algorithm would you choose
+   between linear search and binary search? Explain your reasoning.
+    - I would have to use a linear search since binary searches cannot be used on 
+      an unsorted collection.
+
+6) Given a sorted collection of a million items, which algorithm would you choose 
+   between linear search and binary search? Explain your reasoning.
+    - I would choose binary search in this case.  In a worst case scenario, a linear 
+      search would need a million iterations and a binary search would only require 
+      20 iterations in a worst case scenario.
+      
+
+Programming Assignment:
+
+1) You and a friend have set a wager to see who can find the word "Albatross" in 
+   the dictionary the fastest. Write a program to allow you to win the bet.
+   
+let list = ["Eagle", "Falcon", "Albatross", "Owl", "Humming Bird", "Raven", "Sparrow"]
+
+function findWord (array, target) {
+  let sortedArr = array.sort()
+  let midIndex = Math.floor(sortedArr.length / 2)
+
+    if (sortedArr[midIndex] === target) {
+        return sortedArr[midIndex]
+     } else if (sortedArr[midIndex] < target && sortedArr.length > 1) {
+        return findWord(sortedArr.splice(midIndex, sortedArr.length), target)
+     } else if (sortedArr[midIndex] > target && sortedArr.length > 1) {
+        return findWord(sortedArr.splice(0, midIndex), target)
+     } else {
+        return "Not found"
+    }
+  }
+
+console.log(findWord(list, "Albatross"))
+
+
+2) You work at a pet store, and a child has asked you to net the only white-spotted 
+   goldfish from the fish tank. Write a program that will help you net the right 
+   fish.
+
+let list = ["Goldfish1", "Goldfish2", "Goldfish3", "Goldfish4", "White-spotted Goldfish", "Goldfish5", "Goldfish6", "Goldfish7"]
+
+function findFish (fishCollection, targetFish) {
+  let currentFish = null, value
+    
+  for (i=0; i < fishCollection.length; i++) {
+    value = fishCollection[i]
+    if (value === targetFish) {
+      currentFish = i
+     }
+  }
+    return `Your fish was the ${currentFish}th one!`
+ }
+
+console.log(findFish(list, "White-spotted Goldfish"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
