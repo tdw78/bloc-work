@@ -1,0 +1,74 @@
+Exercises:
+
+1)
+    let list = [4, 2, 8, 11, 1, 22, 29, 7]
+
+    function bubbleSort(array) {
+      for(i = array.length; i > 0; i--) {
+        for(j = 0; j < i; j++) {
+          if (array[j] > array[j + 1]) {
+            let temp = array[j]
+            array[j] = array[j + 1]
+            array[j + 1] = temp
+          }
+        }
+      }
+    
+      return array
+    }
+
+    console.log(bubbleSort(list))
+
+
+2)
+   FUNCTION quickSort(collection)
+     SET pivot to last element in collection
+     SET newIndex to collection[pivot] + 1
+
+     FOR i = FIRST INDEX of collection to LAST INDEX of collection - 1
+       IF collection[i] > pivot THEN
+         SET newIndex to collection[i]
+       END IF
+     END FOR
+     
+     SET leftArray to collection[0] to collection[pivot] -1
+     SET rightArray to collection[pivot] + 1 to collection[collection.length]
+  
+     IF rightArray.length === 0 THEN
+       SET sortedArr to an empty array
+       PUSH leftArray to sortedArr
+       PUSH rigthArray to sortedArr
+     ELSE IF
+       CALL quickSort on leftArray
+       Call quickSort on rightArray
+     END IF
+
+     RETURN sortedArr
+   END FUNCTION
+
+3)  We talked about time complexity in a previous checkpoint, and how to get an idea 
+    of the efficiency of an algorithm. After looking at the pseudocode for the above
+    sorting methods, identify why merge sort and quick sort are much more efficient 
+    than the others. Walking through each algorithm with a few sample collections 
+    may help.
+
+      - Merge Sort has a log linear time complexity, O(n log n). Quick sort has a 
+        logarithmic time complexity, O(log n).  Because these algorithms split the
+        array into sub arrays, if 1 element is added to the array, the algorithm
+        isn't required to run an additional time.
+        All of the other sorting algorithms, Insertion Sort, Selection Sort and Bubble
+        Sort, have a time complexity of O(n^2). This is because they iterate of the 
+        array.
+  
+
+
+
+4)  All of the sorts addressed in this checkpoint are known as comparison sorts. 
+    Research bucket sort and explain how it works. What is the ideal input for 
+    bucket sort?
+
+      -  Assign each element into a bucket based on the value of the elements first
+         integer or character.  Once all of the elements have been placed into their
+         repective buckets, then each bucket is sorted.  Once each bucket is sorted, 
+         they are joined together, starting with the first bucket, to make a sorted 
+         list. 
